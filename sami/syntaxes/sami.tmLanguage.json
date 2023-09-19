@@ -36,7 +36,7 @@
 		"fields": {
 			"patterns": [
 				{
-					"name": "entity.name.function.member.sami",
+					"name": "entity.name.type.sami",
 					"match": "\\b(Resource type|Logical name|Name|Description|Default)\\b"
 				}
 			]
