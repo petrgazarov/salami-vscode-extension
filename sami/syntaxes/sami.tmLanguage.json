@@ -3,32 +3,69 @@
 	"name": "Salami Natural Language",
 	"patterns": [
 		{
-			"include": "#comments"
-		},
-		{
-			"include": "#keywords"
-		},
-		{
-			"include": "#strings"
+			"include": "#comment-block"
 		},
 		{
 			"include": "#numbers"
+		},
+		{
+			"include": "#boolean-literal"
+		},
+		{
+			"include": "#type-primitive"
+		},
+		{
+			"include": "#decorators"
+		},
+		{
+			"include": "#fields"
+		},
+		{
+			"include": "#strings"
 		}
 	],
 	"repository": {
-		"keywords": {
+		"decorators": {
 			"patterns": [
 				{
 					"name": "keyword.control.sami",
-					"match": "\\b(if|while|for|return)\\b"
+					"match": "\\b(\\@|exports|uses|variable)\\b"
+				}
+			]
+		},
+		"fields": {
+			"patterns": [
+				{
+					"name": "entity.name.function.member.sami",
+					"match": "\\b(Resource type|Logical name|Name|Description|Default)\\b"
+				}
+			]
+		},
+		"type-primitive": {
+			"name": "support.type.primitive.sami",
+			"match": "\\b(string|number|bigint|boolean|symbol|any|void|never|unknown)\\b"
+		},
+		"boolean-literal": {
+			"patterns": [
+				{
+					"name": "constant.language.boolean.true.sami",
+					"match": "\\b(true)\\b"
+				},
+				{
+					"name": "constant.language.boolean.false.sami",
+					"match": "\\b(false)\\b"
 				}
 			]
 		},
 		"numbers": {
 			"patterns": [
 				{
-					"name": "keyword.other.unit.suffix.integer.sami",
-					"match": "(^-?[0-9][0-9\\.]+$)"
+					"match": "(?x)\n(?<!\\$)(?:\n  (?:\\b[0-9][0-9_]*(\\.)[0-9][0-9_]*[eE][+-]?[0-9][0-9_]*(n)?\\b)| # 1.1E+3\n  (?:\\b[0-9][0-9_]*(\\.)[eE][+-]?[0-9][0-9_]*(n)?\\b)|             # 1.E+3\n  (?:\\B(\\.)[0-9][0-9_]*[eE][+-]?[0-9][0-9_]*(n)?\\b)|             # .1E+3\n  (?:\\b[0-9][0-9_]*[eE][+-]?[0-9][0-9_]*(n)?\\b)|                 # 1E+3\n  (?:\\b[0-9][0-9_]*(\\.)[0-9][0-9_]*(n)?\\b)|                      # 1.1\n  (?:\\b[0-9][0-9_]*(\\.)(n)?\\B)|                                  # 1.\n  (?:\\B(\\.)[0-9][0-9_]*(n)?\\b)|                                  # .1\n  (?:\\b[0-9][0-9_]*(n)?\\b(?!\\.))                                 # 1\n)(?!\\$)",
+					"captures": {
+						"0": {
+							"name": "constant.numeric.decimal.sami"
+						}
+					}
 				}
 			]
 		},
@@ -44,19 +81,24 @@
 			]
 		},
 		"comment-block": {
-			"begin": "/\\*",
-			"beginCaptures": {
-				"0": {
-					"name": "punctuation.definition.comment.begin.sami"
+			"patterns": [
+				{
+					"begin": "(^[ \\t]+)?((//)(?:\\s*((@)internal)(?=\\s|$))?)",
+					"beginCaptures": {
+						"1": {
+							"name": "punctuation.whitespace.comment.leading.sami"
+						},
+						"2": {
+							"name": "comment.line.double-slash.sami"
+						},
+						"3": {
+							"name": "punctuation.definition.comment.sami"
+						}
+					},
+					"end": "(?=$)",
+					"contentName": "comment.line.double-slash.sami"
 				}
-			},
-			"end": "\\*/",
-			"endCaptures": {
-				"0": {
-					"name": "punctuation.definition.comment.end.sami"
-				}
-			},
-			"name": "comment.block.sami"
+			]
 		}
 	},
 	"scopeName": "source.sami"
