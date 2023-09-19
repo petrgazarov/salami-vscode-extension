@@ -1,0 +1,25 @@
+{
+  "name": "sami",
+  "displayName": "SAMI",
+  "description": "Salami Natural Language",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.82.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "sami",
+      "aliases": ["Salami Natural Language", "sami"],
+      "extensions": [".sami"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "sami",
+      "scopeName": "source.sami",
+      "path": "./syntaxes/sami.tmLanguage.json"
+    }]
+  }
+}
