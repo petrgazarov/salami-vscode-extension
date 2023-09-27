@@ -6,7 +6,10 @@
 			"include": "#comment-block"
 		},
 		{
-			"include": "#numbers"
+			"include": "#number"
+		},
+		{
+			"include": "#string"
 		},
 		{
 			"include": "#boolean-literal"
@@ -15,49 +18,37 @@
 			"include": "#type-primitive"
 		},
 		{
-			"include": "#decorators"
+			"include": "#decorator"
 		},
 		{
-			"include": "#fields"
+			"include": "#variable"
 		},
 		{
-			"include": "#strings"
+			"include": "#resource-reference"
 		}
 	],
 	"repository": {
-		"decorators": {
+		"comment-block": {
 			"patterns": [
 				{
-					"name": "keyword.control.sami",
-					"match": "\\b(\\@|exports|uses|variable)\\b"
+					"begin": "(^[ \\t]+)?((#)(?:\\s*((@)internal)(?=\\s|$))?)",
+					"beginCaptures": {
+							"1": {
+									"name": "punctuation.whitespace.comment.leading.sami"
+							},
+							"2": {
+									"name": "comment.line.number-sign.sami"
+							},
+							"3": {
+									"name": "punctuation.definition.comment.sami"
+							}
+					},
+					"end": "(?=$)",
+					"contentName": "comment.line.number-sign.sami"
 				}
 			]
 		},
-		"fields": {
-			"patterns": [
-				{
-					"name": "entity.name.type.sami",
-					"match": "\\b(Resource type|Logical name|Name|Description|Default)\\b"
-				}
-			]
-		},
-		"type-primitive": {
-			"name": "support.type.primitive.sami",
-			"match": "\\b(string|number|bigint|boolean|symbol|any|void|never|unknown)\\b"
-		},
-		"boolean-literal": {
-			"patterns": [
-				{
-					"name": "constant.language.boolean.true.sami",
-					"match": "\\b(true)\\b"
-				},
-				{
-					"name": "constant.language.boolean.false.sami",
-					"match": "\\b(false)\\b"
-				}
-			]
-		},
-		"numbers": {
+		"number": {
 			"patterns": [
 				{
 					"match": "(?x)\n(?<!\\$)(?:\n  (?:\\b[0-9][0-9_]*(\\.)[0-9][0-9_]*[eE][+-]?[0-9][0-9_]*(n)?\\b)| # 1.1E+3\n  (?:\\b[0-9][0-9_]*(\\.)[eE][+-]?[0-9][0-9_]*(n)?\\b)|             # 1.E+3\n  (?:\\B(\\.)[0-9][0-9_]*[eE][+-]?[0-9][0-9_]*(n)?\\b)|             # .1E+3\n  (?:\\b[0-9][0-9_]*[eE][+-]?[0-9][0-9_]*(n)?\\b)|                 # 1E+3\n  (?:\\b[0-9][0-9_]*(\\.)[0-9][0-9_]*(n)?\\b)|                      # 1.1\n  (?:\\b[0-9][0-9_]*(\\.)(n)?\\B)|                                  # 1.\n  (?:\\B(\\.)[0-9][0-9_]*(n)?\\b)|                                  # .1\n  (?:\\b[0-9][0-9_]*(n)?\\b(?!\\.))                                 # 1\n)(?!\\$)",
@@ -69,7 +60,7 @@
 				}
 			]
 		},
-		"strings": {
+		"string": {
 			"name": "string.quoted.double.sami",
 			"begin": "\"",
 			"end": "\"",
@@ -80,24 +71,44 @@
 				}
 			]
 		},
-		"comment-block": {
+		"boolean-literal": {
 			"patterns": [
 				{
-					"begin": "(^[ \\t]+)?((//)(?:\\s*((@)internal)(?=\\s|$))?)",
-					"beginCaptures": {
-						"1": {
-							"name": "punctuation.whitespace.comment.leading.sami"
-						},
-						"2": {
-							"name": "comment.line.double-slash.sami"
-						},
-						"3": {
-							"name": "punctuation.definition.comment.sami"
-						}
-					},
-					"end": "(?=$)",
-					"contentName": "comment.line.double-slash.sami"
+					"name": "constant.language.boolean.true.sami",
+					"match": "\\b(True)\\b"
+				},
+				{
+					"name": "constant.language.boolean.false.sami",
+					"match": "\\b(False)\\b"
 				}
+			]
+		},
+		"type-primitive": {
+			"name": "support.type.primitive.sami",
+			"match": "\\b(string|number|boolean)\\b"
+		},
+		"decorator": {
+			"patterns": [
+				{
+					"name": "entity.name.function.sami",
+					"match": "\\b(\\@|resource|variable)\\b"
+				}
+			]
+		},
+		"variable": {
+			"patterns": [
+					{
+							"name": "variable.parameter.sami",
+							"match": "\\{([^}]*)\\}"
+					}
+			]
+		},
+		"resource-reference": {
+			"patterns": [
+					{
+							"name": "entity.name.type.class.sami",
+							"match": "\\$[A-Za-z_][A-Za-z0-9_]*"
+					}
 			]
 		}
 	},
