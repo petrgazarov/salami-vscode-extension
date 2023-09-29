@@ -1,0 +1,36 @@
+{
+  "name": "salami",
+  "displayName": "Salami Natural Language",
+  "description": "Syntax highlighter for Salami Natural Language",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.82.0"
+  },
+  "keywords": [
+    "Infrastructure as Code",
+    "IaC",
+    "Infrastructure as Natural Language"
+  ],
+  "preview": true,
+  "icon": "images/salami-extension-icon.png",
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "salami",
+      "aliases": ["Salami Natural Language", "sami"],
+      "extensions": [".sami"],
+      "configuration": "./language-configuration.json",
+      "icon": {
+        "light": "./icons/salami-icon.svg",
+        "dark": "./icons/salami-icon.svg"
+      }
+    }],
+    "grammars": [{
+      "language": "salami",
+      "scopeName": "source.sami",
+      "path": "./syntaxes/salami.tmLanguage.json"
+    }]
+  }
+}

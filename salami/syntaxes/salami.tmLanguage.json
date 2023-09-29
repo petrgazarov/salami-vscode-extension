@@ -3,9 +3,6 @@
 	"name": "Salami Natural Language",
 	"patterns": [
 		{
-			"include": "#comment-block"
-		},
-		{
 			"include": "#number"
 		},
 		{
@@ -28,26 +25,6 @@
 		}
 	],
 	"repository": {
-		"comment-block": {
-			"patterns": [
-				{
-					"begin": "(^[ \\t]+)?((#)(?:\\s*((@)internal)(?=\\s|$))?)",
-					"beginCaptures": {
-							"1": {
-									"name": "punctuation.whitespace.comment.leading.sami"
-							},
-							"2": {
-									"name": "comment.line.number-sign.sami"
-							},
-							"3": {
-									"name": "punctuation.definition.comment.sami"
-							}
-					},
-					"end": "(?=$)",
-					"contentName": "comment.line.number-sign.sami"
-				}
-			]
-		},
 		"number": {
 			"patterns": [
 				{
