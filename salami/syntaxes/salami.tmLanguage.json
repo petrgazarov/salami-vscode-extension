@@ -15,7 +15,7 @@
 			"include": "#type-primitive"
 		},
 		{
-			"include": "#decorator"
+			"include": "#constructor-function"
 		},
 		{
 			"include": "#variable"
@@ -64,11 +64,11 @@
 			"name": "support.type.primitive.sami",
 			"match": "\\b(string|number|boolean)\\b"
 		},
-		"decorator": {
+		"constructor-function": {
 			"patterns": [
 				{
 					"name": "entity.name.function.sami",
-					"match": "\\b(\\@|resource|variable)\\b"
+					"match": "(\\@resource|\\@variable)\\b"
 				}
 			]
 		},
