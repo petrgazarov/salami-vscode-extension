@@ -3,6 +3,7 @@
   "displayName": "Salami VS Code Extension",
   "description": "VS Code extension for Salami language. Provides syntax highlighting functionality.",
   "repository": "https://github.com/petrgazarov/salami-vscode-extension",
+  "publisher": "Salami",
   "version": "0.0.1-rc.1",
   "engines": {
     "vscode": "^1.82.0"
