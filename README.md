@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="images/salami-extension-icon.png" alt="Salami Icon" width="100px" height="100px">
+  <img src="https://raw.githubusercontent.com/petrgazarov/salami-vscode-extension/master/images/salami-extension-icon.png" alt="Salami icon" width="100px" height="100px">
 </p>
 
 # Salami VS Code Extension
