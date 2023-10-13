@@ -1,15 +1,21 @@
 {
   "name": "salami",
-  "displayName": "Salami Natural Language",
-  "description": "Syntax highlighter for Salami Natural Language",
-  "version": "0.0.1",
+  "displayName": "Salami VS Code Extension",
+  "description": "VS Code extension for Salami language. Provides syntax highlighting functionality.",
+  "version": "0.0.1-rc.1",
   "engines": {
     "vscode": "^1.82.0"
   },
   "keywords": [
-    "Infrastructure as Code",
-    "IaC",
-    "Infrastructure as Natural Language"
+    "salami",
+    "sami",
+    "infrastructure-as-natural-language",
+    "infrastructure-as-code",
+    "iac",
+    "cloud-infrastructure",
+    "llm",
+    "syntax-highlighting",
+    "natural-language"
   ],
   "preview": true,
   "icon": "images/salami-extension-icon.png",
@@ -19,7 +25,7 @@
   "contributes": {
     "languages": [{
       "id": "salami",
-      "aliases": ["Salami Natural Language", "sami"],
+      "aliases": ["Salami DSL", "sami"],
       "extensions": [".sami"],
       "configuration": "./language-configuration.json",
       "icon": {
